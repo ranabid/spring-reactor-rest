@@ -9,6 +9,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class IncidentHandler {
+	private RequestHandler requestHandler;
+	
+	public IncidentHandler(RequestHandler requestHandler) {
+		this.requestHandler = requestHandler;	
+	}
 	
 	public Mono<ServerResponse> getIncidents(ServerRequest request) {
 		String response = "{"
@@ -18,9 +23,7 @@ public class IncidentHandler {
 						+ "\"configurtion\": \"genesys\" "
 					+ "}"
 				+ "}";
-				
-		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-			.body(BodyInserters.fromObject(response));
+		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(response));
 	}
 
 }

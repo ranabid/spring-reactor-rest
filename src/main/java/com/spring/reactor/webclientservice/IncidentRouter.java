@@ -14,7 +14,8 @@ public class IncidentRouter {
 	@Bean
 	public RouterFunction<ServerResponse> route(IncidentHandler incidentHandler) {
 
-		return RouterFunctions
-			.route(RequestPredicates.GET("/incidents").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), incidentHandler::getIncidents);
+		return RouterFunctions.route(
+				RequestPredicates.GET("/incidents").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+				incidentHandler::getIncidents);
 	}
 }
