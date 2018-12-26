@@ -1,14 +1,20 @@
 package com.spring.reactor.webclientservice;
 
+import java.net.CookieManager;
+import java.net.CookieStore;
+import java.net.HttpCookie;
 import java.net.URI;
 import java.util.Map;
-
+import org.eclipse.jetty.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.reactive.ClientHttpConnector;
+import org.springframework.http.client.reactive.JettyClientHttpConnector;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.reactive.function.client.ClientRequest;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class HttpWebClient {
@@ -61,6 +67,31 @@ public class HttpWebClient {
 			LOGGER.error(ex.getMessage());
 			throw new Exception(ex);
 		}
+	}
+
+	public void setCookies() {
+		HttpClient httpClient = new HttpClient();
+		CookieStore cookieStore = new CookieManager().getCookieStore();
+		HttpCookie cookie = new HttpCookie("role", "Admin");
+		cookieStore.add(URI.create("/admin"), cookie);
+		httpClient.setCookieStore(cookieStore);
+		ClientHttpConnector connector = new JettyClientHttpConnector(httpClient);
+
+		/*
+		 * WebClient client = WebClient.builder() .baseUrl(baseUrl)
+		 * .clientConnector(connector) .build();
+		 */
+
+	}
+
+	// Client Filters
+	public void exchangeFilterFunction() {
+		WebClient client = WebClient.builder().filter((request, next) -> {
+
+			ClientRequest filtered = ClientRequest.from(request).header("foo", "bar").build();
+
+			return next.exchange(filtered);
+		}).build();
 	}
 
 }
