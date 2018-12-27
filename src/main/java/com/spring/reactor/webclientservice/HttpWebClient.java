@@ -1,4 +1,4 @@
-package com.spring.reactor.webservice.consumer;
+package com.spring.reactor.webclientservice;
 
 import java.net.CookieManager;
 import java.net.CookieStore;

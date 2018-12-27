@@ -1,4 +1,4 @@
-package com.spring.reactor.webservice.consumer;
+package com.spring.reactor.webclientservice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ public class WebclientServiceApplication {
 		SpringApplication.run(WebclientServiceApplication.class, args);
 		try {
 			HttpWebClient httpWebClient = new HttpWebClient("http://localhost:8080");
-			System.out.println(httpWebClient.wrappedGet("/incidents"));
+			System.out.println(httpWebClient.wrappedGet("/incident/list"));
 
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage());

@@ -1,4 +1,4 @@
-package com.spring.reactor.webservice.producer;
+package com.spring.reactor.webclientservice;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
