@@ -1,4 +1,4 @@
-package com.spring.reactor.webclientservice;
+package com.spring.reactor.webservice.producer;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

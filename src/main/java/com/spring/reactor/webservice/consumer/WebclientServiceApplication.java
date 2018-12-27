@@ -1,4 +1,4 @@
-package com.spring.reactor.webclientservice;
+package com.spring.reactor.webservice.consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

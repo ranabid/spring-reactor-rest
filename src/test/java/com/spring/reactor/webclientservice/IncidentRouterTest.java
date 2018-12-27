@@ -20,7 +20,7 @@ public class IncidentRouterTest {
 	@Test
 	public void testGetIncidents() {
 		webTestClient
-			.get().uri("/incidents")
+			.get().uri("/incident/list")
 			.accept(MediaType.APPLICATION_JSON)
 			.exchange()
 			.expectStatus().isOk()
