@@ -10,12 +10,13 @@ public class WebclientServiceApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HttpWebClient.class);
 
 	public static void main(String[] args) {
-
+		TokenCacheManager tokenCache = new TokenCacheManager();
 		SpringApplication.run(WebclientServiceApplication.class, args);
+		
+		
 		try {
-
-			// HttpWebClient httpWebClient = new HttpWebClient("http://localhost:8080");
-			// System.out.println(httpWebClient.wrappedGet("/incident/list"));
+			
+			LOGGER.info(tokenCache.getToken());
 
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage());

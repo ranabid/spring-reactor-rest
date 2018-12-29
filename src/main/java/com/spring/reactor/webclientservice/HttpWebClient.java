@@ -38,7 +38,7 @@ public class HttpWebClient {
 		}
 	}
 
-	public String wrappedPost(final String uri, final String requestBody) throws Exception {
+	public String wrappedPost(final String uri, final Object requestBody) throws Exception {
 
 		try {
 			String response = this.webClient.post().uri(URI.create(uri)).contentType(MediaType.APPLICATION_JSON)

@@ -16,13 +16,18 @@ public class IncidentHandler {
 	}
 	
 	public Mono<ServerResponse> getIncidents(ServerRequest request) {
+//		String response = "{"
+//				+ "\"INC12345\":"
+//					+ "{"
+//						+ "\"title\": \"Auto Alert\","
+//						+ "\"configurtion\": \"genesys\" "
+//					+ "}"
+//				+ "}";
+		
 		String response = "{"
-				+ "\"INC12345\":"
-					+ "{"
-						+ "\"title\": \"Auto Alert\","
-						+ "\"configurtion\": \"genesys\" "
-					+ "}"
-				+ "}";
+				+"\"token\": \"DBG&FRDT%$^_HYUJHGrfse453&^52\""
+				+"}";
+				
 		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(response));
 	}
 
